@@ -13,7 +13,7 @@ function Navbar() {
     >
       <div className="container-fluid px-4">
         <Link className="navbar-brand fw-bold fs-4 text-light" to="/">
-          🎯 QuizMaster
+          🧩 QuizMaster
         </Link>
 
         <button
