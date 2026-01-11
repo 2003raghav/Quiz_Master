@@ -79,19 +79,53 @@ function Home() {
           </div>  
         </div>
       </div>
-      <form action="mailto:raghav251203@gmail.com" method="post" enctype="text/plain" className="d-flex flex-column align-items-center p-4 shadow-sm rounded-3 bg-light mx-auto mb-4" style={{ maxWidth: "500px" ,border:"1px solid #ddd"}}> 
-      <span className="fs-3 fw-semibold mb-3 text-center">Please give your feedback</span>
-        <div className="mb-3 w-100">
-          <label htmlFor="name" className="form-label">Name</label> 
-          <input type="text" name="name" placeholder="Your name" className="form-control"/>
-        </div>
-        <div className="mb-3 w-100">
-          <label htmlFor="message" className="form-label">Feedback</label> 
-          <textarea name="message" placeholder="Your feedback" className="form-control"></textarea>
-        </div>
-        <button type="submit" className="btn btn-primary">Send Feedback</button>
-      </form>
-    </div>
+     <form
+            action="https://docs.google.com/forms/d/e/1FAIpQLSfg5oSGVlSu3A2hRwoHaI2d5ItaeFz6Okr8jGaLzE7y2Jiixw/formResponse"
+              method="POST"
+              target="_blank"
+              onSubmit={(e) => {
+                // clear form after submit
+                setTimeout(() => {
+                  e.target.reset();
+                }, 100);
+              }}
+              className="d-flex flex-column align-items-center p-4 shadow-sm rounded-3 bg-light mx-auto mb-4"
+              style={{ maxWidth: "500px", border: "1px solid #ddd" }}
+            >
+              <span className="fs-3 fw-semibold mb-3 text-center">
+                Please give your feedback
+              </span>
+
+              <div className="mb-3 w-100">
+                <label className="form-label">Name</label>
+                <input
+                  type="text"
+                  name="entry.1724934814"
+                  placeholder="Your name"
+                  className="form-control"
+                  required
+                />
+              </div>
+
+              <div className="mb-3 w-100">
+                <label className="form-label">Feedback</label>
+                <textarea
+                  name="entry.627780062"
+                  placeholder="Your feedback"
+                  className="form-control"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-primary">
+                Send Feedback
+              </button>
+            </form>
+
+      <div className="text-end m-3">
+        <Link to='/addQuestions' className="text-decoration-none fw-bold text-primary fs-2 "> ➕ Add Questions</Link>
+      </div>
+   </div>
   );
 }
 

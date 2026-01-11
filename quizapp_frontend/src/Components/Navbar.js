@@ -1,8 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaJava, FaPython, FaCuttlefish, FaSearch } from "react-icons/fa";
 
 function Navbar() {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (search.trim() !== "") {
+      navigate(`/search?query=${search}`);
+    }
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
@@ -16,55 +26,40 @@ function Navbar() {
           🧩 QuizMaster
         </Link>
 
-        <button
-          className="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse justify-content-between">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item mx-2">
               <Link className="nav-link text-light fw-semibold" to="/">
-                <FaHome className="me-1" /> Home
+                <FaHome /> Home
               </Link>
             </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-light fw-semibold" to="/java">
-                <FaJava className="me-1" /> Java
+                <FaJava /> Java
               </Link>
             </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-light fw-semibold" to="/python">
-                <FaPython className="me-1" /> Python
+                <FaPython /> Python
               </Link>
             </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-light fw-semibold" to="/cpp">
-                <FaCuttlefish className="me-1" /> C++
+                <FaCuttlefish /> C++
               </Link>
             </li>
           </ul>
 
-          {/* Search bar */}
-          <form className="d-flex align-items-center" role="search">
+          {/* 🔍 Search */}
+          <form className="d-flex" onSubmit={handleSearch}>
             <input
-              className="form-control me-2 rounded-pill px-3"
+              className="form-control me-2 rounded-pill"
               type="search"
               placeholder="Search quiz..."
-              aria-label="Search"
-              style={{ width: "200px" }}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <button
-              className="btn btn-outline-light rounded-pill px-3"
-              type="submit"
-            >
+            <button className="btn btn-outline-light rounded-pill">
               <FaSearch />
             </button>
           </form>

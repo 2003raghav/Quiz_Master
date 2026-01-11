@@ -51,7 +51,7 @@ function Footer() {
       <hr className="border-light mt-3 mb-2" />
 
       <div className="text-center small">
-        © {new Date().getFullYear()} QuizMaster | Built with ❤️ using React & Bootstrap
+        © {new Date().getFullYear()} QuizMaster | Built with ❤️ by Raghavendra Kashyap C B
       </div>
     </footer>
   );

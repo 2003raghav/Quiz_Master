@@ -6,6 +6,8 @@ import JavaQuiz from './pages/JavaQuiz'
 import PythonQuiz from './pages/PythonQuiz'
 import CppQuiz from './pages/CppQuiz'
 import { Route, Routes } from 'react-router-dom'
+import SearchResults from './pages/SearchResult'
+import Questions from './pages/Questions'
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/java" element={<JavaQuiz />} />
           <Route path="/python" element={<PythonQuiz />} />
           <Route path="/cpp" element={<CppQuiz />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/addQuestions" element={<Questions />} />
         </Routes>
       </div>
       <Footer/>
