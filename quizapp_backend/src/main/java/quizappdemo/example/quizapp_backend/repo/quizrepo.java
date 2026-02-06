@@ -11,10 +11,14 @@ import java.util.List;
 
 @Repository
 public interface quizrepo extends JpaRepository<quizlist, Integer> {
+
     List<quizlist> findByCategory(String category);
 
     @Query("SELECT q.answer FROM quizlist q WHERE q.id = :id")
-    String findanswerById(@Param("id") int id);
+    String findAnswerById(@Param("id") int id);
+
+    @Query("SELECT q.question FROM quizlist q WHERE q.id = :id")
+    String findQuestionById(@Param("id") int id);
 
     List<quizlist> findByQuestionContainingIgnoreCaseOrCategoryContainingIgnoreCase(
             String question, String category

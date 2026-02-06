@@ -1,9 +1,10 @@
 package quizappdemo.example.quizapp_backend.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import quizappdemo.example.quizapp_backend.DTO.AnswerCheckRequest;
+import quizappdemo.example.quizapp_backend.DTO.AnswerCheckResponse;
 import quizappdemo.example.quizapp_backend.list.quizlist;
 import quizappdemo.example.quizapp_backend.service.quizservice;
 
@@ -18,19 +19,17 @@ public class quizcontroller {
     quizservice service;
 
     @GetMapping("/hi")
-    public String greet()
-    {
+    public String greet() {
         return "Hi,Welcome to quiz app";
     }
+
     @GetMapping("/allquestions")
-    public ResponseEntity<List<quizlist>> getallquestions()
-    {
+    public ResponseEntity<List<quizlist>> getallquestions() {
         return service.getallqustions();
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<quizlist>> getquestionsbycatogery(@PathVariable String category)
-    {
+    public ResponseEntity<List<quizlist>> getquestionsbycatogery(@PathVariable String category) {
         return service.getallqustionsbycatogery(category);
     }
 
@@ -39,9 +38,14 @@ public class quizcontroller {
         return service.getanswer(id);
     }
 
+    // NEW ENDPOINT: Check answer with AI explanation
+    @PostMapping("/check-answer")
+    public ResponseEntity<AnswerCheckResponse> checkAnswer(@RequestBody AnswerCheckRequest request) {
+        return service.checkAnswerWithExplanation(request);
+    }
+
     @GetMapping("/search")
     public ResponseEntity<?> searchQuiz(@RequestParam String keyword) {
         return service.searchQuiz(keyword);
     }
 }
-
